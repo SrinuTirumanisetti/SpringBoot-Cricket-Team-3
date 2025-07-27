@@ -20,7 +20,7 @@ public class Player{
     @Column(name="playername")
     private String playerName;
 
-    @Column(name="jerseyNumber")
+    @Column(name="jerseynumber")
     private int jerseyNumber;
 
     @Column(name="role")
