@@ -27,4 +27,9 @@ public class PlayerController{
     public List<Player> getPlayers(){
         return service.getPlayers();
     }
+
+    @PostMapping("/players")
+    public Player addPlayer(@RequestBody Player player){
+        return service.addPlayer(player);
+    }
 }

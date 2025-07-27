@@ -34,4 +34,10 @@ public class PlayerJpaService implements PlayerRepository {
     public List<Player> getPlayers() {
         return playerJpaRepository.findAll();
     }
+
+    @Override
+    public Player addPlayer(Player player){
+        playerJpaRepository.save(player);
+        return player;
+    }
 }
