@@ -19,6 +19,8 @@ import com.example.player.repository.PlayerJpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class PlayerJpaService implements PlayerRepository {
@@ -39,5 +41,12 @@ public class PlayerJpaService implements PlayerRepository {
     public Player addPlayer(Player player){
         playerJpaRepository.save(player);
         return player;
+    }
+
+    @Override
+    public Player getPlayerById(int playerId){
+            return playerJpaRepository.findById(playerId)
+                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
     }
 }

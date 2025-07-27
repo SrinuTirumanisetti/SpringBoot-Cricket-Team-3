@@ -8,4 +8,5 @@ import java.util.*;
 public interface PlayerRepository{
     List<Player> getPlayers();
     Player addPlayer(Player player);
+    Player getPlayerById(int playerId);
 }

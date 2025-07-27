@@ -32,4 +32,9 @@ public class PlayerController{
     public Player addPlayer(@RequestBody Player player){
         return service.addPlayer(player);
     }
+
+    @GetMapping("/players/{playerId}")
+    public Player getPlayerById(@PathVariable("playerId") int playerId){
+        return service.getPlayerById(playerId);
+    }
 }
