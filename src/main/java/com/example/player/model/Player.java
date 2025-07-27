@@ -21,7 +21,7 @@ public class Player{
     private String playerName;
 
     @Column(name="jerseynumber")
-    private int jerseyNumber;
+    private Integer jerseyNumber;
 
     @Column(name="role")
     private String role;

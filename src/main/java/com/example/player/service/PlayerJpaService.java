@@ -45,8 +45,33 @@ public class PlayerJpaService implements PlayerRepository {
 
     @Override
     public Player getPlayerById(int playerId){
-            return playerJpaRepository.findById(playerId)
-                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        try{
+            Player player = playerJpaRepository.findById(playerId).get();
+            return player;
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 
+    @Override
+    public Player updatePlayer(int playerId,Player player){
+        try{
+            Player newPlayer = playerJpaRepository.findById(playerId).get();
+            if(player.getPlayerName()!=null){
+                newPlayer.setPlayerName(player.getPlayerName());
+            }
+            if(player.getJerseyNumber()!=0){
+                newPlayer.setJerseyNumber(player.getJerseyNumber());
+            }
+            if(player.getRole()!=null){
+                newPlayer.setRole(player.getRole());
+            }
+            playerJpaRepository.save(newPlayer);
+            return newPlayer;
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 }
