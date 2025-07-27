@@ -74,4 +74,14 @@ public class PlayerJpaService implements PlayerRepository {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
+
+    @Override
+    public void deletePlayer(int playerId){
+        try{
+            playerJpaRepository.deleteById(playerId);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 }
